@@ -19,14 +19,14 @@ flowchart TD
 
     subgraph ROW2 [ ]
         direction LR
-        PAIR[Determine Pair Engine:<br/>Pair consumers with nearby providers]
-        EXTRACT[Road Network Extraction Engine:<br/>Extract state road network]
+        PAIR[<strong>Determine Pair Engine:</strong><br/>Pair consumers with nearby providers]
+        EXTRACT[<strong>Road Network Extraction Engine:</strong><br/>Extract state road network]
     end
 
     GRAPH[(Road Network Graph)]
     NODE[(Graph Nodes)]
     
-    ROUTER[Router Calculation Engine:<br/>Compute shortest paths & distances]
+    ROUTER[<strong>Router Calculation Engine:</strong><br/>Compute shortest paths & distances]
     
     OUTPUT[(Update Shortest Paths & Distances in PostgreSQL)]
 
