@@ -1,8 +1,7 @@
-# Network Adequacy ETL Pipeline
+# Network Adequacy Engine Pipeline Overview
 
 ## Overview
-
-The Network Adequacy ETL pipeline processes issuer-submitted files and national provider data to produce datasets for the network adequacy calculation engine and dashboard reporting. The pipeline consists of three core ETL processes that transform raw submissions into geocoded, normalized datasets ready for compliance analysis.
+The Network Adequacy Engine pipeline processes issuer-submitted and provider data to generate distance-based insights for compliance analysis and reporting. It is organized into three core engines that identify eligible consumer–provider pairs, extract the road network, and compute shortest path distances to support network adequacy evaluation.
 
 ## Data Flow
 
@@ -64,13 +63,13 @@ flowchart TD
 
 ### Primary Inputs: 
 
-1. **"Providers Data"** (Provider network information)
+1. **"Providers Data:"** (Provider network information)
    - Provider NPIs, names, addresses, and specialty codes
 
-2. **"Consumer Data"** (Service area coverage)
+2. **"Consumer Data:"** (Service area coverage)
    - Geographic coverage definitions (full county or ZIP-code-based)
 
-3. **"Criteria Data"** (Service area coverage)
+3. **"Criteria Data:"** (Service area coverage)
    - Drive time and distance requirements for provider specialty criteria and county type
    - CDE_COUNTY, Criteria, TME_DRVE, DISTANCE
 
@@ -99,17 +98,17 @@ python Route_Calculation_PA.py
 
 ---
 
-### Determine_Pairs_PA.py
+### [Determine Pairs Engine](src/Determine_Pairs_PA.py)
    - Find consumer and provider pair that lies within the criteria distance.
    - Update all provider and consumer pair within all unique distance and criteria data in the postgres database in table: *Coordinate_pairs_pa*
 
-### Road_Network_Extraction_PA.py
+### [Road Network Extraction Engine](src/Road_Network_Extraction_PA.py)
    - Extract the road network for the specified state.
    - Store the network graph as a serialized (pickle) file and the associated nodes dataset in Parquet format.
    - Graph_pa.pkl: Contains the extracted state road network graph
    - Graph_nodes_pa.parquet: Contains the nodes of the extracted state road network
 
-### Route_Calculation_PA.py;
+### [Route Calculation Engine](src/Route_Calculation_PA.py)
    - Compute shortest paths and distances using the road network graph and nodes.
    - Update the computed results in the postgres database table *Coordinate_pairs_pa*
 
