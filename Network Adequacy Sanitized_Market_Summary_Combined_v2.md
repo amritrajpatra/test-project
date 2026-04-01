@@ -106,7 +106,7 @@ graph TD
     style GEOENGINE fill:none,stroke:none
     
     %% Outer subgraphs - dark grey/black backgrounds, colored borders
-    style INPUTS fill:#2d2d2d,stroke:#01579b,stroke-width:2px,rx:20,ry:20,color:#fff
+    style INPUTS fill:#717171,stroke:#01579b,stroke-width:2px,rx:20,ry:20,color:#fff
     style GEOSPATIAL fill:#2d2d2d,stroke:#1b5e20,stroke-width:2px,rx:20,ry:20,color:#fff
     style PROCESSING fill:#2d2d2d,stroke:#1b5e20,stroke-width:2px,rx:20,ry:20,color:#fff
     style OUTPUTS fill:#2d2d2d,stroke:#4a148c,stroke-width:2px,rx:20,ry:20,color:#fff
